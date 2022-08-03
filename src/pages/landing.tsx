@@ -3,9 +3,21 @@ import { useState } from "react";
 import Rocket from "../../public/rocket.svg";
 import { SelectControl, SelectOption } from "../../components/molecules/SelectControl";
 import AppBar from "../../components/molecules/AppBar";
+import { BadgeBar } from "../../components/molecules/BadgeBar";
+import { BadgeItemData } from "../../components/atoms/BadgeItem";
 
 
 const Landing = () => {
+  const badgeBarItems: BadgeItemData[] = [
+    { name: "NTFs", count: 10, value: 1 },
+    { name: "Tokens", count: 20, value: 2 },
+    { name: "Chains", count: 100, value: 3 },
+    { name: "Tools #1", count: 8, value: 4 },
+    { name: "Tools #2", count: 13, value: 5 },
+  ]
+
+  const [selectedBadge, setSelectedBadge] = useState(badgeBarItems[0])
+
   const toDoItems: SelectOption[] = [
     { name: 'Design an NFT #1', value: "1" },
     { name: 'Design an NFT #2', value: "2" },
@@ -32,7 +44,7 @@ const Landing = () => {
             <button className="primary hover:bg-violet-800 mt-8">Find Your Tool</button>
           </div>
           <div className="relative w-[70%] md:absolute md:top-18 md:right-16 md:w-[35%] lg:top-[1rem] lg:right-[5rem]">
-            <Image src={Rocket} layout="responsive" objectFit="cover" priority={false}/>
+            <Image src={Rocket} layout="responsive" objectFit="cover" priority={false} />
           </div>
         </div>
       </section>
@@ -53,6 +65,9 @@ const Landing = () => {
           <h1 className="text-xl font-[700] text-center text-white py-28">
             Another Section
           </h1>
+          <div className="px-2 md:3/4">
+            <BadgeBar data={badgeBarItems} onChange={setSelectedBadge} value={selectedBadge} />
+          </div>
         </div>
       </section>
     </>
