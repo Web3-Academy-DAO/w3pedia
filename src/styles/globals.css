@@ -17,3 +17,7 @@
     @apply bg-gray-50 text-gray-900 dark:bg-gray-900;
   }
 }
+
+button.primary {
+  @apply shadow-md bg-violet-700 text-white text-xl font-semibold py-3 px-6 rounded transition duration-300
+}
