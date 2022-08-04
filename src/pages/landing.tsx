@@ -5,9 +5,21 @@ import { SelectControl, SelectOption } from "../../components/molecules/SelectCo
 import AppBar from "../../components/molecules/AppBar";
 import { BadgeBar } from "../../components/molecules/BadgeBar";
 import { BadgeItemData } from "../../components/atoms/BadgeItem";
+import { CardItemData } from "../../components/atoms/CardItem";
+import { CardGrid } from "../../components/molecules/CardGrid";
 
 
 const Landing = () => {
+  const cardItems: CardItemData[] = [
+    { title: "Example Name", rating: 1, chains: ["Ethereum", "Polygon", "Chainlink", "Solona", "Testnet"], tags: ["NFT1", "NFT2", "NFT3", "NFT1", "NFT2", "NFT3", "NFT1", "NFT2", "NFT3"], content: "Here’s a little blurb about what this company does. It should be short Here’s a little blurb about what this company does. It should be short" },
+    { title: "Example Name", rating: 2, chains: ["Ethereum", "Polygon"], tags: ["NFT1", "NFT2", "NFT3"], content: "Here’s a little blurb about what this company does. It should be short Here’s a little blurb about what this company does. It should be short" },
+    { title: "Example Name", rating: 2, chains: ["Ethereum", "Polygon"], tags: ["NFT1", "NFT2", "NFT3"], content: "Here’s a little blurb about what this company does. It should be short Here’s a little blurb about what this company does. It should be short" },
+    { title: "Example Name", rating: 5, chains: ["Ethereum", "Polygon"], tags: ["NFT1", "NFT2", "NFT3"], content: "Here’s a little blurb about what this company does. It should be short Here’s a little blurb about what this company does. It should be short" },
+    { title: "Example Name", rating: 4, chains: ["Ethereum", "Polygon"], tags: ["NFT1", "NFT2", "NFT3"], content: "Here’s a little blurb about what this company does. It should be short Here’s a little blurb about what this company does. It should be short" },
+    { title: "This Is A Long Long Long Long Name", rating: 3, chains: ["Ethereum", "Polygon"], tags: ["NFT1", "NFT2", "NFT3"], content: "Here’s a little blurb about what this company does. It should be short Here’s a little blurb about what this company does. It should be short" },
+    { title: "This Is A Long Long Long Long Name", rating: 2, chains: ["Ethereum", "Polygon"], tags: ["NFT1", "NFT2", "NFT3"], content: "Here’s a little blurb about what this company does. It should be short Here’s a little blurb about what this company does. It should be short" }
+  ]
+
   const badgeBarItems: BadgeItemData[] = [
     { name: "NTFs", count: 10, value: 1 },
     { name: "Tokens", count: 20, value: 2 },
@@ -49,24 +61,31 @@ const Landing = () => {
         </div>
       </section>
       <section className="mt-20">
-        <div className="sm:w-3/4 md:5/12 mx-auto py-8">
+        <div className="sm:w-3/4 md:w-5/12 mx-auto py-8 ">
           <h1 className="text-xl font-[700] text-center text-white">
             Find Your Web3 Tools
           </h1>
         </div>
-        <div className="flex flex-1 justify-center py-8">
+        <div className="flex flex-1 justify-center py-8 ">
           <div className="relative w-11/12 md:w-5/12">
             <SelectControl data={toDoItems} onChange={setSelectedToDoItem} value={selectedToDoItem} />
           </div>
         </div>
       </section>
       <section className="relative" >
-        <div className="sm:w-3/4 md:5/12 mx-auto py-8 my-[10]">
-          <h1 className="text-xl font-[700] text-center text-white py-28">
+        <div className="sm:w-3/4 md:w-5/12 mx-auto py-8 ">
+          <h1 className="text-xl font-[700] text-center text-white py-28 ">
             Another Section
           </h1>
-          <div className="px-2 md:3/4">
+        </div>
+        <div className="flex flex-1 justify-center py-8">
+          <div className="w-full md:basis-10/12">
             <BadgeBar data={badgeBarItems} onChange={setSelectedBadge} value={selectedBadge} />
+          </div>
+        </div>
+        <div className="flex flex-1 justify-center py-8  ">
+          <div className="w-full md:basis-10/12">
+            <CardGrid data={cardItems} />
           </div>
         </div>
       </section>
