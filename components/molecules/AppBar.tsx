@@ -3,8 +3,11 @@ import { useTheme } from "next-themes";
 import { FC, useEffect, useState } from "react";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { FaSun } from "react-icons/fa";
+import NetworkClient from "../services/NetworkClient";
+import { useAppSelector } from "../services/Store";
 
 const AppBar: FC = () => {
+  const authenticated = useAppSelector(state => state.auth.authenticated)
   const { systemTheme, theme, setTheme } = useTheme();
   const [hasMounted, setHasMounted] = useState(false)
 
@@ -19,6 +22,25 @@ const AppBar: FC = () => {
       <FaSun className="w-6 h-6 cursor-pointer" color="white" onClick={toggleTheme} /> :
       <BsMoonStarsFill className="w-6 h-6 cursor-pointer" color="white" onClick={toggleTheme} />
   };
+
+  const onLogin = () => {
+    NetworkClient.makeLogin("philip", "philip123")
+  }
+
+  const onLogout = () => {
+    NetworkClient.makeLogout()
+  }
+
+  const onTest = () => {
+    NetworkClient.makeGet("/api/forms", {}, 0, 1, (resp) => {
+    })
+  }
+
+  const onTestError = () => {
+    NetworkClient.makeGet("/api/forms/1", {}, 0, 1, (resp) => {
+      console.log(resp)
+    })
+  }
 
   useEffect(() => {
     setHasMounted(true)
@@ -35,10 +57,25 @@ const AppBar: FC = () => {
           {hasMounted && (renderThemeChanger())}
         </li>
         <li><div className="border-r-2">&nbsp;</div></li>
-        <li className="cursor-pointer">Login</li>
-        <li>
+        {!authenticated && <li className="cursor-pointer">
+          <button onClick={onLogin}>Login</button>
+        </li>}
+        {!authenticated && <li>
           <button className="primary hover:bg-violet-800">Sign Up</button>
-        </li>
+        </li>}
+        {authenticated && <li>
+          <button className="primary hover:bg-violet-800" onClick={onLogout}>Logout</button>
+        </li>}
+        {authenticated && (
+          <>
+            <li>
+              <button className="primary hover:bg-violet-800" onClick={onTest}>Test</button>
+            </li>
+            <li>
+              <button className="primary hover:bg-violet-800" onClick={onTestError}>Test Error</button>
+            </li>
+          </>
+        )}
       </ul>
       <ul className="flex flex-1 justify-end px-2 sm:hidden">
         <li>
