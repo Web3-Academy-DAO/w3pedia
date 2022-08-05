@@ -1,13 +1,20 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from "next-themes";
+import { Provider } from "react-redux";
+import { defaultStore, storeWrapper } from '../../components/services/Store'
+import NetworkClient from '../../components/services/NetworkClient';
+
+NetworkClient.setup(defaultStore)
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
-      <Component {...pageProps} />
-    </ThemeProvider> 
+    <Provider store={defaultStore}>
+      <ThemeProvider attribute="class">
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Provider>
   );
 }
 
-export default MyApp
+export default storeWrapper.withRedux(MyApp)
