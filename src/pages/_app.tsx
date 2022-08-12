@@ -4,14 +4,24 @@ import { ThemeProvider } from "next-themes";
 import { Provider } from "react-redux";
 import { defaultStore, storeWrapper } from '../../components/services/Store'
 import NetworkClient from '../../components/services/NetworkClient';
+import PageWithLayoutType from '../../components/layouts/pageWithLayoutType';
 
 NetworkClient.setup(defaultStore)
 
-function MyApp({ Component, pageProps }: AppProps) {
+type AppLayoutPros = AppProps & {
+  Component: PageWithLayoutType,
+  pageProps: any
+}
+
+function MyApp({ Component, pageProps }: AppLayoutPros) {
+  const Layout = Component.layout || ((children: JSX.Element) => <>{children}</>)
+
   return (
     <Provider store={defaultStore}>
       <ThemeProvider attribute="class">
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </Provider>
   );

@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { useState } from "react";
-import Rocket from "../../public/rocket.svg";
-import { SelectControl, SelectOption } from "../../components/molecules/SelectControl";
-import AppBar from "../../components/molecules/AppBar";
-import { BadgeBar } from "../../components/molecules/BadgeBar";
 import { BadgeItemData } from "../../components/atoms/BadgeItem";
 import { CardItemData } from "../../components/atoms/CardItem";
+import MainLayout from "../../components/layouts/MainLayout";
+import { BadgeBar } from "../../components/molecules/BadgeBar";
 import { CardGrid } from "../../components/molecules/CardGrid";
-
+import { SelectControl, SelectOption } from "../../components/molecules/SelectControl";
+import Rocket from "../../public/rocket.svg";
 
 const Landing = () => {
   const cardItems: CardItemData[] = [
@@ -42,7 +41,6 @@ const Landing = () => {
 
   return (
     <>
-      <AppBar />
       <section className="relative">
         <div className="container flex flex-col-reverse md:flex-row items-center gap-12 mt-14 md:mt-16">
           <div className="flex flex-col items-center md:items-start md:ml-[10%] md:basis-8/12">
@@ -92,5 +90,7 @@ const Landing = () => {
     </>
   )
 }
+
+Landing.layout = MainLayout
 
 export default Landing;
