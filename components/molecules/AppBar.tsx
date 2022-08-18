@@ -5,8 +5,10 @@ import { BsMoonStarsFill } from "react-icons/bs";
 import { FaSun } from "react-icons/fa";
 import NetworkClient from "../services/NetworkClient";
 import { useAppSelector } from "../services/Store";
+import { useRouter } from "next/router";
 
 const AppBar: FC = () => {
+  const Router = useRouter()
   const authenticated = useAppSelector(state => state.auth.authenticated)
   const { systemTheme, theme, setTheme } = useTheme();
   const [hasMounted, setHasMounted] = useState(false)
@@ -48,9 +50,11 @@ const AppBar: FC = () => {
 
   return (<header className="bg-black">
     <nav className="flex items-center bg-[#343038] pl-6 py-3 text-white">
-      <div className="text-3xl font-semibold">W3pedia</div>
+      <div className="text-3xl font-semibold">
+        <span className="cursor-pointer" onClick={() => Router.push("/")}>W3pedia</span>
+      </div>
       <ul className="hidden sm:flex flex-1 justify-end items-center gap-8 font-semibold text-lg px-2">
-        <li className="cursor-pointer">Tools</li>
+        <li className="cursor-pointer" onClick={() => Router.push("tools")}>Tools</li>
         <li className="cursor-pointer">Blogs</li>
         <li className="cursor-pointer">Discussion</li>
         <li>

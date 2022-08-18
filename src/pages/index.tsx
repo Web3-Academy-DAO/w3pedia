@@ -1,36 +1,40 @@
-import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
-import { NavBar } from "../../components/molecules";
+import { useState } from "react";
+import { BadgeItemData } from "../../components/atoms/BadgeItem";
+import { CardItemData } from "../../components/atoms/CardItem";
+import MainLayout from "../../components/layouts/MainLayout";
+import { BadgeBar } from "../../components/molecules/BadgeBar";
+import { CardGrid } from "../../components/molecules/CardGrid";
+import { SelectControl, SelectOption } from "../../components/molecules/SelectControl";
 import Rocket from "../../public/rocket.svg";
+import { useRouter } from "next/router";
 
-const Home: NextPage = () => {
+const Landing = () => {
+  const Router = useRouter()
+
   return (
-    <div>
-      <Head>
-        <title>Web3Pedia</title>
-        <meta
-          name="description"
-          content="Hand-picked Tools and Resources for web3 dOers"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <NavBar />
-      <main className=" w-full h-screen px-10 md:flex">
-        <div className="flex justify-center flex-col items-center md:items-start">
-          <h1 className="text-white font-[100] text-[3rem] text-center md:text-left md:text-[6rem]">
-            Discover the best Building tools for{" "}
-            <span className="text-violet-700 font-[600]">Web3</span>
-          </h1>
-          <p className="text-white text-center md:text-left max-w-[90%] md:max-w-[50%]">
-            A growing and community-run database indexing (almost) every live
-            tool across the Web3 ecosystem
-          </p>
+    <>
+      <section className="relative">
+        <div className="container flex flex-col-reverse md:flex-row items-center gap-12 my-14 md:my-16">
+          <div className="flex flex-col items-center md:items-start md:ml-[10%] md:basis-8/12">
+            <h1 className="text-white font-[100] text-6xl text-center md:text-left md:text-8xl">
+              Discover the best Building tools for{" "}
+              <span className="text-violet-700 font-[600]">Web3</span>
+            </h1>
+            <div className="text-white text-center text-lg mt-8 md:text-left md:max-w-[50%]">
+              A growing and community-run database indexing (almost) every live tool across the Web3 ecosystem
+            </div>
+            <button className="primary hover:bg-violet-800 mt-8" onClick={() => Router.push("tools")}>Find Your Tool</button>
+          </div>
+          <div className="relative w-[70%] md:absolute md:top-18 md:right-16 md:w-[35%] lg:top-[1rem] lg:right-[5rem]">
+            <Image src={Rocket} layout="responsive" objectFit="cover" priority={false} />
+          </div>
         </div>
-        <Image src={Rocket} alt="Rocket Blasting Off"/>
-      </main>
-    </div>
-  );
-};
+      </section>
+    </>
+  )
+}
 
-export default Home;
+Landing.layout = MainLayout
+
+export default Landing;
