@@ -9,7 +9,7 @@ interface BadgeBarProps {
 
 const BadgeBar: FC<BadgeBarProps> = ({ data = [], value, onChange = () => { } }: BadgeBarProps) => {
   return (
-    <div className="container flex flex-row flex-nowrap overflow-auto md:flex-wrap gap-4">
+    <div className="container flex flex-row flex-nowrap overflow-auto md:flex-wrap gap-4 scrollbar-hide md:justify-center">
       {data.map((item, index) => (
         <BadgeItem data={item} key={index} onClick={() => onChange(item)} active={value?.value == item.value} />
       ))}
