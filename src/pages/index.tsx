@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { MainLayout } from "../components/layouts";
-import { BadgeItemData } from "../components/atoms";
+import { BadgeItemData, Button } from "../components/atoms";
 import {
   CardItemData,
   CardGrid,
@@ -13,6 +13,7 @@ import {
 } from "../components/molecules";
 import Rocket from "../../public/rocket.svg";
 import { CurrencyDollarIcon } from "@heroicons/react/solid";
+import { Link as ScrollLink } from "react-scroll";
 
 const Tools = () => {
   const Router = useRouter();
@@ -198,27 +199,24 @@ const Tools = () => {
   return (
     <>
       <section className="relative">
-        <div className="container flex flex-col-reverse md:flex-row items-center gap-12 my-14 md:my-16">
-          <div className="flex flex-col items-center md:items-start md:ml-[10%] md:basis-8/12">
-            <h1 className="text-white font-[100] text-6xl text-center md:text-left md:text-8xl">
-              Discover the best Building tools for{" "}
+        <div className="container flex flex-col-reverse  md:flex-row items-center gap-12 my-14 md:my-16">
+          <div className="flex flex-col items-center md:items-start md:ml-[10%] md:basis-8/12" >
+            <h1 className="text-white font-[100] text-4xl text-center md:text-left md:text-6xl max-w-lg">
+              Discover the best building tools for{" "}
               <span className="text-violet-700 font-[600]">Web3</span>
             </h1>
-            <div className="text-white text-center text-lg mt-8 md:text-left md:max-w-[50%]">
+            <div className="text-white text-center text-lg mt-8 md:text-left max-w-lg">
               A growing and community-run database indexing (almost) every live
               tool across the Web3 ecosystem
             </div>
-            <button
-              className="primary hover:bg-violet-800 mt-8"
-              onClick={() => Router.push("tools")}
-            >
-              Find Your Tool
-            </button>
+            <ScrollLink to="tools" smooth offset={-50} duration={500}>
+              <Button className="mt-8">Find your Tool</Button>
+            </ScrollLink>
           </div>
-          <div className="relative w-[70%] md:absolute md:top-18 md:right-16 md:w-[35%] lg:top-[1rem] lg:right-[5rem]">
+          <div className="w-[70%] sm:w-[50%]">
             <Image
               src={Rocket}
-              alt="rocket shooting upwards"
+              alt="rocket shooting upwards majestically"
               layout="responsive"
               objectFit="cover"
               priority={false}
@@ -226,9 +224,9 @@ const Tools = () => {
           </div>
         </div>
       </section>
-      <section className="mb-20">
+      <section className="mb-20 min-h-screen">
         <div className="sm:w-3/4 md:w-5/12 mx-auto py-8 ">
-          <h1 className="text-2xl font-[400] text-center text-white">
+          <h1 id="tools" className="text-2xl font-[400] text-center text-white">
             Find Your Web3 Tools
           </h1>
         </div>

@@ -17,12 +17,12 @@ export const Button = ({
 }: IButton) => {
   return (
     <button
-      className={`text-white bg-violet-700 hover:bg-violet-800 active:bg-violet-900 px-4 py-2 rounded md:rounded-md ${
+      className={`text-white font-normal text-base bg-violet-700 hover:bg-violet-800 active:bg-violet-900 px-4 py-2 rounded md:rounded-md ${
         type === "secondary" &&
         "bg-gray-600 hover:bg-gray-700 active:bg-gray-800"
       } ${
         type === "nav" &&
-        "bg-transparent hover:bg-gray-700 active:bg-gray-800 px-3 py-2 mx-2"
+        "bg-transparent hover:bg-gray-700 active:bg-gray-800"
       } ${className}`}
       {...rest}
     >
