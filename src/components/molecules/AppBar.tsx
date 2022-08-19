@@ -7,7 +7,7 @@ import NetworkClient from "../services/NetworkClient";
 import { useAppSelector } from "../services/Store";
 import { useRouter } from "next/router";
 
-const AppBar: FC = () => {
+export const AppBar: FC = () => {
   const Router = useRouter()
   const authenticated = useAppSelector(state => state.auth.authenticated)
   const { systemTheme, theme, setTheme } = useTheme();
@@ -89,5 +89,3 @@ const AppBar: FC = () => {
     </nav>
   </header>)
 }
-
-export default AppBar;

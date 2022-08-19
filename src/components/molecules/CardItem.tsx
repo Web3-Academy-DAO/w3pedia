@@ -1,7 +1,7 @@
-import Image from "next/image"
 import { FC } from "react"
-import Rocket from "../../public/rocket.svg"
-import { RatingBar } from "../molecules/RatingBar"
+import Image from "next/image"
+import Rocket from "../../../public/rocket.svg"
+import { RatingBar } from "./RatingBar"
 
 interface CardItemData {
   title: string,
@@ -15,7 +15,7 @@ interface CardItemProps {
   data: CardItemData
 }
 
-const CardItem: FC<CardItemProps> = ({ data }: CardItemProps) => {
+export const CardItem: FC<CardItemProps> = ({ data }: CardItemProps) => {
   return <div className="text-white flex flex-col bg-[#343038] p-5 gap-3 rounded-lg">
     <div className="flex flex-row relative items-center gap-2">
       <div className="flex-none">
@@ -57,4 +57,3 @@ const CardItem: FC<CardItemProps> = ({ data }: CardItemProps) => {
 }
 
 export type { CardItemData, CardItemProps }
-export { CardItem }

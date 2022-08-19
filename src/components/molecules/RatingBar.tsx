@@ -6,7 +6,7 @@ interface RatingBarProps {
   active: number
 }
 
-const RatingBar: FC<RatingBarProps> = ({ total, active }: RatingBarProps) => {
+export const RatingBar: FC<RatingBarProps> = ({ total, active }: RatingBarProps) => {
   return <div className="flex flex-row flex-nowrap">
     {Array.from(Array(total), (e, index) =>
       <span className="" key={index}>
@@ -15,5 +15,3 @@ const RatingBar: FC<RatingBarProps> = ({ total, active }: RatingBarProps) => {
     )}
   </div>
 }
-
-export { RatingBar }
