@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { CardItem, CardItemData } from "../atoms/CardItem";
+import { CardItem, CardItemData } from "./CardItem";
 
 interface CardGridProps {
   data: CardItemData[]
 }
 
-const CardGrid: FC<CardGridProps> = ({ data }: CardGridProps) => {
+export const CardGrid: FC<CardGridProps> = ({ data }: CardGridProps) => {
   return (
     <div className="px-2 grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-4 content-start items-start">
       {data.map((item, index) =>
@@ -17,5 +17,4 @@ const CardGrid: FC<CardGridProps> = ({ data }: CardGridProps) => {
   )
 }
 
-export { CardGrid };
 export type { CardGridProps };

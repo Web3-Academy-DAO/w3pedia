@@ -1,6 +1,6 @@
+import { FC } from "react";
 import { Listbox } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon, XIcon } from "@heroicons/react/solid";
-import { FC } from "react";
 
 interface SelectOption {
   value: string;
@@ -18,7 +18,7 @@ interface SelectionOptionProps {
   onChange?: (value: SelectOption) => void;
 }
 
-const SelectionControl: FC<SelectionOptionProps> = ({ data = [], onChange = (e) => { } }: SelectionOptionProps) => {
+export const SelectionControl: FC<SelectionOptionProps> = ({ data = [], onChange = (e) => { } }: SelectionOptionProps) => {
   return (<>
     {
       data.map((item, index) => (
@@ -35,7 +35,7 @@ const SelectionControl: FC<SelectionOptionProps> = ({ data = [], onChange = (e) 
   </>)
 }
 
-const SelectControl: FC<SelectOptionProps> = ({ value = { value: "", name: "" }, data = [], onChange = (e) => { } }: SelectOptionProps) => {
+export const SelectControl: FC<SelectOptionProps> = ({ value = { value: "", name: "" }, data = [], onChange = (e) => { } }: SelectOptionProps) => {
   return (<Listbox value={value} onChange={onChange}>
     <Listbox.Button className="relative w-full cursor-pointer rounded-3xl bg-white text-md text-left py-2 pl-10 pr-4 ring-2 ring-purple-700 shadow-2xl	shadow-purple-700 z-20 md:text-lg">
       <span className="block truncate text-black">{value.name}</span>
@@ -64,5 +64,4 @@ const SelectControl: FC<SelectOptionProps> = ({ value = { value: "", name: "" },
   </Listbox>)
 }
 
-export { SelectControl, SelectionControl };
 export type { SelectOption };

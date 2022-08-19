@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaDiscord, FaSpotify, FaTwitter } from "react-icons/fa";
 
-const AppFooter: FC = () => {
+export const AppFooter: FC = () => {
   const data = [
     { name: "Home", link: "#" },
     { name: "Blog", link: "#" },
@@ -34,5 +34,3 @@ const AppFooter: FC = () => {
     </>
   )
 }
-
-export default AppFooter;
