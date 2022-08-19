@@ -23,9 +23,9 @@ export const AppFooter: FC = () => {
           <span className="pl-2">Brought to you by the Web 3 Academy DAO</span>
         </div>
         <div className="pt-5 text-white flex flex-row justify-center gap-10 md:w-1/3">
-          <FaDiscord className="w-8 h-8 cursor-pointer" />
-          <FaTwitter className="w-8 h-8 cursor-pointer" />
-          <FaSpotify className="w-8 h-8 cursor-pointer" />
+          <FaDiscord className="w-5 h-5 cursor-pointer" />
+          <FaTwitter className="w-5 h-5 cursor-pointer" />
+          <FaSpotify className="w-5 h-5 cursor-pointer" />
         </div>
         <div className="pt-5 text-white text-sm text-center md:text-right md:text-sm md:w-1/3">
           <span className="pr-2">Brought to you by the Web 3 Academy DAO</span>

@@ -5,7 +5,7 @@ export const MainLayout: LayoutProps = ({ children }) => {
   return (
     <>
       <AppBar />
-      <div>{children}</div>
+      <div className="max-w-[90%] mx-auto">{children}</div>
       <AppFooter />
     </>
   );
