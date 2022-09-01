@@ -42,10 +42,11 @@ export const AppBar: FC = () => {
 
   const onLogout = () => {
     NetworkClient.makeLogout();
+    Router.push("/")
   };
 
-  const onTest = () => {
-    NetworkClient.makeGet("/api/forms", {}, 0, 1, (resp) => {});
+  const onSubmitNewTool = () => {
+    Router.push("submission")
   };
 
   const onTestError = () => {
@@ -66,50 +67,30 @@ export const AppBar: FC = () => {
             W3pedia
           </span>
         </div>
-        <ul className="hidden sm:flex flex-1 justify-end items-center gap-8 font-semibold text-lg px-2">
+        <ul className="hidden sm:flex flex-1 justify-end items-center gap-4 font-semibold text-lg px-2">
           <li>{hasMounted && renderThemeChanger()}</li>
           <li>
             <div className="border-r-2">&nbsp;</div>
           </li>
           {!authenticated && (
             <li className="cursor-pointer">
-              <Button type="nav" onClick={onLogin}>Login</Button>
+              <Button type="primary" className="w-32" onClick={onLogin}>Login</Button>
             </li>
           )}
           {!authenticated && (
             <li>
-              <Button className="mr-5">Sign Up</Button>
+              <Button type="secondary" className="w-32">Sign Up</Button>
             </li>
           )}
           {authenticated && (
             <li>
-              <button
-                className="primary hover:bg-violet-800"
-                onClick={onLogout}
-              >
-                Logout
-              </button>
+              <Button type="primary" className="min-w-32" onClick={onSubmitNewTool}>Submit New Tool</Button>
             </li>
           )}
           {authenticated && (
-            <>
-              <li>
-                <button
-                  className="primary hover:bg-violet-800"
-                  onClick={onTest}
-                >
-                  Test
-                </button>
-              </li>
-              <li>
-                <button
-                  className="primary hover:bg-violet-800"
-                  onClick={onTestError}
-                >
-                  Test Error
-                </button>
-              </li>
-            </>
+            <li>
+              <Button type="secondary" className="w-32" onClick={onLogout}>Logout</Button>
+            </li>
           )}
         </ul>
         <ul className="flex flex-1 justify-end px-2 sm:hidden">
