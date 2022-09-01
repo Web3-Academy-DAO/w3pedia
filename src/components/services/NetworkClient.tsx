@@ -29,7 +29,7 @@ const NetworkClient = {
         if (error.response.status == 403) {
           console.log("403 error - should logout")
         } else {
-          console.log(`An error has occurred ${error.response.data.error.message}`)
+          console.log(`An error has occurred: ${error.response.data.error.message}`)
         }
         return Promise.reject(error);
       }
@@ -69,15 +69,41 @@ const NetworkClient = {
       });
   },
 
-  makePost(url: string, data: { [key: string]: any }, callback: (resp: any) => void): void {
+  makePost(url: string, data: { [key: string]: any }, callback: (resp: any) => void, errorCallback?: ((error: any) => void)): void {
     axios
       .post(url, data)
       .then((resp) => {
         callback(resp);
       })
       .catch((error) => {
+        if (errorCallback != undefined) {
+          errorCallback(error.response.data.error)
+        }
         console.error("API request failed: " + error.message);
       });
+  },
+
+  makeUpload(url: string, data: Blob | null, callback: (resp: any) => void, errorCallback?: ((error: any) => void)): void {
+    if (data == null) return
+
+    let formData = new FormData();
+    formData.append("files", data);
+
+    axios
+      .post(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      })
+      .then((resp) => {
+        callback(resp)
+      })
+      .catch((error) => {
+        if (errorCallback != undefined) {
+          errorCallback(error.response.data.error)
+        }
+        console.error("API upload failed: " + error.message);
+      })
   }
 }
 

@@ -1,12 +1,16 @@
 import { AppBar, AppFooter } from "../molecules";
+import { ErrorModal } from "../molecules/ErrorModal";
 import { LayoutProps } from "./PageWithLayoutType";
 
 export const MainLayout: LayoutProps = ({ children }) => {
   return (
-    <>
-      <AppBar />
-      <div className="max-w-[90%] mx-auto">{children}</div>
-      <AppFooter />
-    </>
+    <div className="min-h-screen flex flex-col">
+      <ErrorModal />
+      <div><AppBar /></div>
+      <div className="container max-w-[90%] mx-auto flex-auto">
+        {children}
+      </div>
+      <div><AppFooter /></div>
+    </div>
   );
 };
