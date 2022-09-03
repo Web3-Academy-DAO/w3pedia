@@ -36,7 +36,7 @@ const NetworkClient = {
     );
   },
 
-  makeLogin(username: string, password: string) {
+  makeLogin(username: string, password: string, callback?: (resp: any) => void, errorCallback?: ((error: any) => void)) {
     this.makePost("/api/auth/local", { identifier: username, password: password }, (resp) => {
       defaultStore.dispatch({
         type: "auth/setLoginState",
@@ -45,6 +45,14 @@ const NetworkClient = {
           token: resp.data.jwt
         }
       })
+
+      if (callback != undefined) {
+        callback(resp)
+      }
+    }, (error) => {
+      if (errorCallback != undefined) {
+        errorCallback(error)
+      }
     })
   },
 
@@ -77,7 +85,7 @@ const NetworkClient = {
       })
       .catch((error) => {
         if (errorCallback != undefined) {
-          errorCallback(error.response.data.error)
+          errorCallback(error.response?.data?.error)
         }
         console.error("API request failed: " + error.message);
       });
