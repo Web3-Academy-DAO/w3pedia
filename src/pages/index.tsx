@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { MainLayout } from "../components/layouts";
@@ -199,7 +199,7 @@ const Tools = () => {
   return (
     <>
       <section className="relative">
-        <div className="container flex flex-col-reverse  md:flex-row items-center gap-12 my-14 md:my-16">
+        <div className="container flex flex-col-reverse md:flex-row items-center gap-12 my-14 md:my-16">
           <div className="flex flex-col items-center md:items-start md:ml-[10%] md:basis-8/12" >
             <h1 className="text-white font-[100] text-4xl text-center md:text-left md:text-6xl max-w-lg">
               Discover the best building tools for{" "}
@@ -210,7 +210,7 @@ const Tools = () => {
               tool across the Web3 ecosystem
             </div>
             <ScrollLink to="tools" smooth offset={-50} duration={500}>
-              <Button className="mt-8">Find your Tool</Button>
+              <Button type="primary" className="mt-8">Find your Tool</Button>
             </ScrollLink>
           </div>
           <div className="w-[70%] sm:w-[50%]">
@@ -224,7 +224,7 @@ const Tools = () => {
           </div>
         </div>
       </section>
-      <section className="mb-20 min-h-screen">
+      <section className="mb-20">
         <div className="sm:w-3/4 md:w-5/12 mx-auto py-8 ">
           <h1 id="tools" className="text-2xl font-[400] text-center text-white">
             Find Your Web3 Tools
@@ -250,9 +250,8 @@ const Tools = () => {
           <div className="grid w-11/12 grid-cols-3 gap-1 md:w-6/12 md:grid-cols-6 md:gap-4 mx-auto">
             {categoryData.map((item, index) => (
               <div
-                className={`cursor-pointer py-3 ${
-                  item.title == selectedCategory?.title ? "bg-[#7A00FF]" : ""
-                } hover:bg-[#7A00FF] rounded-md`}
+                className={`cursor-pointer py-3 ${item.title == selectedCategory?.title ? "bg-[#7A00FF]" : ""
+                  } hover:bg-[#7A00FF] rounded-md`}
                 key={index}
                 onClick={() => {
                   setSelectedCategory(item);

@@ -2,10 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import AuthStoreSlice from "./AuthStoreSlice";
+import ErrorModalSlice from "./ErrorModalSlice";
 
 export const defaultStore = configureStore({
   reducer: {
-    auth: AuthStoreSlice
+    auth: AuthStoreSlice,
+    error: ErrorModalSlice
   }
 })
 
