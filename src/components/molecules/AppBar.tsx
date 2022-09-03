@@ -36,10 +36,6 @@ export const AppBar: FC = () => {
     );
   };
 
-  const onLogin = () => {
-    NetworkClient.makeLogin("philip", "philip123");
-  };
-
   const onLogout = () => {
     NetworkClient.makeLogout();
     Router.push("/")
@@ -47,12 +43,6 @@ export const AppBar: FC = () => {
 
   const onSubmitNewTool = () => {
     Router.push("submission")
-  };
-
-  const onTestError = () => {
-    NetworkClient.makeGet("/api/forms/1", {}, 0, 1, (resp) => {
-      console.log(resp);
-    });
   };
 
   useEffect(() => {
@@ -74,12 +64,12 @@ export const AppBar: FC = () => {
           </li>
           {!authenticated && (
             <li className="cursor-pointer">
-              <Button type="primary" className="w-32" onClick={onLogin}>Login</Button>
+              <Button type="primary" className="w-32" onClick={() => Router.push("login")}>Login</Button>
             </li>
           )}
           {!authenticated && (
             <li>
-              <Button type="secondary" className="w-32">Sign Up</Button>
+              <Button type="secondary" className="w-32" onClick={() => Router.push("register")}>Sign Up</Button>
             </li>
           )}
           {authenticated && (
@@ -99,6 +89,6 @@ export const AppBar: FC = () => {
           </li>
         </ul>
       </nav>
-    </header>
+    </header >
   );
 };
