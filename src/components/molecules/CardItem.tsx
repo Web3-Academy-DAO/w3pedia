@@ -16,7 +16,7 @@ interface CardItemProps {
 }
 
 export const CardItem: FC<CardItemProps> = ({ data }: CardItemProps) => {
-  return <div className="text-white flex flex-col bg-[#343038] p-5 gap-3 rounded-lg">
+  return <div className="text-white flex flex-col bg-[#343038] py-5 px-4 gap-3 rounded-lg">
     <div className="flex flex-row relative items-center gap-2">
       <div className="flex-none">
         <div className="w-12 h-12 rounded-full bg-[#D9D9D9]">
@@ -40,13 +40,13 @@ export const CardItem: FC<CardItemProps> = ({ data }: CardItemProps) => {
       <div className="basis-4/12 flex flex-col gap-2">
         {data.chains.map((item, index) =>
           <div key={index}>
-            <span className="py-1 px-2 text-xs font-medium rounded-lg bg-purple-600">{item}</span>
+            <span className="py-1 px-2 text-xs font-medium truncate rounded-lg bg-purple-600">{item}</span>
           </div>
         )}
       </div>
-      <div className="basis-8/12 flex flex-row flex-wrap gap-2">
+      <div className="basis-8/12 flex flex-row flex-wrap gap-2 ml-1">
         {data.tags.map((item, index) =>
-          <div key={index} className="py-1 px-2 text-xs text-gray-700 font-medium rounded-lg bg-purple-300">{item}</div>
+          <div key={index} className="py-1 px-2 text-xs text-gray-700 truncate font-medium rounded-lg bg-purple-300">{item}</div>
         )}
       </div>
     </div>
