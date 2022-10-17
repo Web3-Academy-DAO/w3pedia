@@ -5,6 +5,7 @@ import NetworkClient from "../components/services/NetworkClient";
 import { CheckCircleIcon } from "@heroicons/react/solid";
 import { useAppDispatch } from "../components/services/Store";
 import { showError, hideError } from "../components/services/ErrorModalSlice";
+import Image from "next/image";
 
 interface SubmissionFormDataGridProps {
   data: (TagData | BlockChainData | CategoryData)[]
@@ -301,7 +302,7 @@ const SubmissionForm = () => {
               <div className="md:w-2/3 ">
                 <div className="md:h-48 w-full">
                   <div className="flex overflow-hidden relative">
-                    <img className="object-scale-down md:object-contain md:h-48 rounded-md cursor-pointer" src={URL.createObjectURL(heroFile)} onClick={onFileRemove} />
+                    <img alt="Uploaded Image" className="object-scale-down md:object-contain md:h-48 rounded-md cursor-pointer" src={URL.createObjectURL(heroFile)} onClick={onFileRemove} />
                   </div>
                 </div>
               </div>
