@@ -43,7 +43,7 @@ const Login = () => {
         </div>
         <div className="text-sm text-right">
           <span className="cursor-pointer text-gray-200 hover:text-white" onClick={() => Router.push("/register")}>
-            Don't have an account? Sign up now.
+            Don&apos;t have an account? Sign up now.
           </span>
         </div>
       </div>

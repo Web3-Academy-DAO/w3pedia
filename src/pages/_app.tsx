@@ -15,14 +15,18 @@ type AppLayoutPros = AppProps & {
 
 function MyApp({ Component, pageProps }: AppLayoutPros) {
   const Layout =
-    Component.layout || ((children: JSX.Element) => <>{children}</>);
+    Component.layout;
 
   return (
     <Provider store={defaultStore}>
       <ThemeProvider attribute="class">
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        {Layout &&
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        } {
+          !Layout && <Component {...pageProps} />
+        }
       </ThemeProvider>
     </Provider>
   );

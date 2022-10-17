@@ -20,7 +20,7 @@ export const CardItem: FC<CardItemProps> = ({ data }: CardItemProps) => {
     <div className="flex flex-row relative items-center gap-2">
       <div className="flex-none">
         <div className="w-12 h-12 rounded-full bg-[#D9D9D9]">
-          <Image src={Rocket} layout="responsive" objectFit="cover" priority={false} />
+          <Image alt="" src={Rocket} layout="responsive" objectFit="cover" priority={false} />
         </div>
 
       </div>

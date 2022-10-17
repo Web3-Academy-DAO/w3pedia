@@ -205,7 +205,7 @@ const Tools = () => {
               alt="rocket shooting upwards majestically"
               layout="responsive"
               objectFit="cover"
-              priority={false}
+              priority={true}
             />
           </div>
         </div>
