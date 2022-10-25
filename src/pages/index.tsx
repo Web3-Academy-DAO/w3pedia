@@ -11,7 +11,7 @@ import {
   SelectionControl,
   SelectOption,
 } from "../components/molecules";
-import Rocket from "../../public/rocket.svg";
+import Rocket from "../../public/rocket.png";
 import { CurrencyDollarIcon } from "@heroicons/react/solid";
 import { Link as ScrollLink } from "react-scroll";
 import NetworkClient from "../components/services/NetworkClient";

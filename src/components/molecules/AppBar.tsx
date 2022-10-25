@@ -38,11 +38,11 @@ export const AppBar: FC = () => {
 
   const onLogout = () => {
     NetworkClient.makeLogout();
-    Router.push("/")
+    Router.push("/");
   };
 
   const onSubmitNewTool = () => {
-    Router.push("submission")
+    Router.push("submission");
   };
 
   useEffect(() => {
@@ -58,10 +58,10 @@ export const AppBar: FC = () => {
           </span>
         </div>
         <ul className="hidden sm:flex flex-1 justify-end items-center gap-4 font-semibold text-lg px-2">
-          {/* <li>{hasMounted && renderThemeChanger()}</li>
+          <li>{hasMounted && renderThemeChanger()}</li>
           <li>
             <div className="border-r-2">&nbsp;</div>
-          </li> */}
+          </li>
           {!authenticated && (
             <li className="cursor-pointer">
               <Button type="primary" className="w-32" onClick={() => Router.push("login")}>Login</Button>
