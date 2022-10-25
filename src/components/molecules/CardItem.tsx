@@ -1,6 +1,6 @@
 import { FC } from "react"
 import Image from "next/image"
-import Rocket from "../../../public/rocket.svg"
+import Rocket from "../../../public/rocket.png"
 import { RatingBar } from "./RatingBar"
 
 interface CardItemData {
